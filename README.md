@@ -1,1 +1,0 @@
-# optogenetics-flyrig-setup
