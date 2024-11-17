@@ -1,0 +1,35 @@
+.parts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  .parts-table th, .parts-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .parts-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .content-section {
+    margin-bottom: 20px;
+  }
+  
+  .content-section h2 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .content-section ol, .content-section ul {
+    margin-left: 20px;
+  }
+  
+  .content-section ol li, .content-section ul li {
+    margin-bottom: 10px;
+  }
+  

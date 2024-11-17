@@ -1,49 +1,55 @@
 import React, { useState, useEffect } from 'react';
+import Papa from 'papaparse';
+import './css/Bill.css'; 
 
-const csvFile = '../assets/Bill of Materials.csv'
+const csvPath = '/BillofMaterials.csv'
 
-// Component to read and display CSV content from a subfolder
 const Bill: React.FC = () => {
-  const [tableData, setTableData] = useState<string[][]>([]);
+  const [data, setData] = useState<any>();
 
-  // Function to fetch and parse CSV
   useEffect(() => {
-      try {
-        const rows = csvFile.split('\n').map((row: any) => row.split(','));
-        setTableData(rows);
-        console.log(rows)
-      } catch (error) {
-        console.error('CSV file could not be loaded:', error);
-      }
+    fetch(csvPath)
+      .then(response => console.log(response.body()))
+      .then(csv => {
+        Papa.parse(csv, {
+          header: true,
+          complete: (result: any) => {
+            setData(result.data);
+          },
+          error: (error: Error) => {
+            console.error('Error parsing CSV:', error);
+          }
+        });
+      });
   }, []);
 
   return (
-    <>
-      <h1>Bill of Materials</h1>
-      {tableData.length > 0 ? (
-        <table border={1} cellPadding="5" style={{ marginTop: '20px', width: '100%', borderCollapse: 'collapse' }}>
+    <div className="csv-table">
+      {data.length > 0 ? (
+        <table>
           <thead>
             <tr>
-              {tableData[0].map((header, index) => (
-                <th key={index}>{header.trim()}</th>
+              {Object.keys(data[0]).map((header, index) => (
+                <th key={index}>{header}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {tableData.slice(1).map((row, rowIndex) => (
+            {data.map((row, rowIndex) => (
               <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex}>{cell.trim()}</td>
+                {Object.values(row).map((cell, colIndex) => (
+                  <td key={colIndex}>{cell}</td>
                 ))}
               </tr>
             ))}
           </tbody>
         </table>
       ) : (
-        <p>Loading CSV data...</p>
+        <p>Loading data...</p>
       )}
-    </>
+    </div>
   );
+  
 };
 
 export default Bill;
