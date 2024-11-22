@@ -5,49 +5,66 @@ import './css/Bill.css';
 const csvPath = '/BillofMaterials.csv'
 
 const Bill: React.FC = () => {
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(csvPath)
-      .then(response => console.log(response.body()))
-      .then(csv => {
-        Papa.parse(csv, {
-          header: true,
-          complete: (result: any) => {
-            setData(result.data);
-          },
-          error: (error: Error) => {
-            console.error('Error parsing CSV:', error);
-          }
-        });
-      });
+    const fetchCSV = async () => {
+      try {
+        const response = await fetch(csvPath);
+        const csvText = await response.text();
+        const parsedData = Papa.parse<string[]>(csvText).data;
+
+        console.log("data: ", parsedData)
+
+        setData(parsedData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching the CSV file:', error);
+      }
+    };
+
+    fetchCSV();
   }, []);
 
   return (
-    <div className="csv-table">
-      {data.length > 0 ? (
-        <table>
-          <thead>
+    <div>
+    <h1>Bill Data</h1>
+    {loading ? (
+        <p>Data is loading...</p>
+    ) : (
+      <table border="1">
+        <thead>
+          {data.length > 0 && (
             <tr>
-              {Object.keys(data[0]).map((header, index) => (
-                <th key={index}>{header}</th>
+              {data[0].map((header, index) => (
+                <th key={index} className={header === 'Link' ? 'link-column' : ''}>
+                  {header}
+                </th>
               ))}
             </tr>
-          </thead>
-          <tbody>
-            {data.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {Object.values(row).map((cell, colIndex) => (
-                  <td key={colIndex}>{cell}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>Loading data...</p>
-      )}
-    </div>
+          )}
+        </thead>
+        <tbody>
+          {data.slice(1).map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {row.map((cell, cellIndex) => (
+                <td key={cellIndex} className={data[0][cellIndex] === 'Link' ? 'link-column' : ''}>
+                  {data[0][cellIndex] === 'Link' ? (
+                    <a href={cell} target="_blank" rel="noopener noreferrer">
+                      {cell}
+                    </a>
+                  ) : (
+                    cell
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
   );
   
 };
