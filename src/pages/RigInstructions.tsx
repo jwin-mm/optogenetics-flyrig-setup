@@ -26,7 +26,7 @@ const RigInstructions: React.FC = () => {
       />
 
       <ContentSection
-        title="Assembling the Photostimulation Rig"
+        title="Assemble the Photostimulation Rig"
         content={
           <>
             <h3>Laser Cut Parts and Assemble Apparatus</h3>

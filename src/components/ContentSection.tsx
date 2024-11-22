@@ -6,9 +6,14 @@ interface ContentSectionProps {
 }
 
 const ContentSection: React.FC<ContentSectionProps> = ({ title, content }) => {
+  
+  const sanitizeTitleId = (title: string): string => {
+    return title.toLowerCase().replace(/\s+/g, '-')
+  }
+  
   return (
     <section className="content-section">
-      <h2>{title}</h2>
+      <h2 id={sanitizeTitleId(title)}>{title}</h2>
       <div>{content}</div>
     </section>
   );

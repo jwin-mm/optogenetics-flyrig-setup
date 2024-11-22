@@ -15,8 +15,6 @@ const Bill: React.FC = () => {
         const csvText = await response.text();
         const parsedData = Papa.parse<string[]>(csvText).data;
 
-        console.log("data: ", parsedData)
-
         setData(parsedData);
         setLoading(false);
       } catch (error) {
