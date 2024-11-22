@@ -14,8 +14,8 @@ const links = [
 ];
 
 const Sidenav: React.FC = () => {
-    const [activePage, setActivePage] = useState(null);
-    const [sectionHeaders, setSectionHeaders] = useState();
+    const [activePage, setActivePage] = useState<string | null>(null);
+    const [sectionHeaders, setSectionHeaders] = useState<{ id: string; text: string | null }[]>();
     const location = useLocation();
 
     const toggleDropdown = (page: string) => {
@@ -48,7 +48,7 @@ const Sidenav: React.FC = () => {
         <div>
             <div id="sidenav">
                 <a id="closebtn" onClick={closeNav}>X</a>
-                {links.map((link, index) => (
+                {links.map((link) => (
                     <div key={link.label} className="sidenav-item" style={{ overflowY: "auto"}}>
                         <Link
                             to={link.path}
@@ -60,7 +60,7 @@ const Sidenav: React.FC = () => {
                         {activePage === link.label && (
                             <div>
                                 {
-                                    sectionHeaders.map((header: any, index: number) => (
+                                    sectionHeaders!.map((header: any, index: number) => (
                                     <a
                                         key={`section-${index}`}
                                         href={`#${header.id}`}

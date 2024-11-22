@@ -5,7 +5,7 @@ import './css/Bill.css';
 const csvPath = '/BillofMaterials.csv'
 
 const Bill: React.FC = () => {
-  const [data, setData] = useState<string>();
+  const [data, setData] = useState<string[][]>();
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -31,11 +31,11 @@ const Bill: React.FC = () => {
     {loading ? (
         <p>Data is loading...</p>
     ) : (
-      <table border="1">
+      <table border={1}>
         <thead>
-          {data.length > 0 && (
+          {data!.length > 0 && (
             <tr>
-              {data[0].map((header, index) => (
+              {data![0].map((header, index) => (
                 <th key={index} className={header === 'Link' ? 'link-column' : ''}>
                   {header}
                 </th>
@@ -44,11 +44,11 @@ const Bill: React.FC = () => {
           )}
         </thead>
         <tbody>
-          {data.slice(1).map((row, rowIndex) => (
+          {data!.slice(1).map((row, rowIndex) => (
             <tr key={rowIndex}>
               {row.map((cell, cellIndex) => (
-                <td key={cellIndex} className={data[0][cellIndex] === 'Link' ? 'link-column' : ''}>
-                  {data[0][cellIndex] === 'Link' ? (
+                <td key={cellIndex} className={data![0][cellIndex] === 'Link' ? 'link-column' : ''}>
+                  {data![0][cellIndex] === 'Link' ? (
                     <a href={cell} target="_blank" rel="noopener noreferrer">
                       {cell}
                     </a>
