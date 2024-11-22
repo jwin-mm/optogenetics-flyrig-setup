@@ -9,11 +9,11 @@
 #menu-icon:hover {
     color: #aaa; 
     transform: scale(1.1);
-    transition: 0.3s
+    transition: 0.3s ease
 }
 
 #wrapper {
-    transition: margin-left .5s;
+    transition: margin-left .5s ease;
     padding: 16px;
     overflow-x: hidden;
 }

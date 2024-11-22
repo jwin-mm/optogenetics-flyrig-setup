@@ -1,3 +1,7 @@
+OL { counter-reset: item }
+LI { display: block }
+LI:before { content: counters(item, ".") " "; counter-increment: item }
+
 .parts-table {
     width: 100%;
     border-collapse: collapse;
@@ -33,3 +37,20 @@
     margin-bottom: 10px;
   }
   
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  img {
+      max-width: 80%; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  img {
+      max-width: 60%;
+  }
+}

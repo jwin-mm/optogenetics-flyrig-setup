@@ -8,7 +8,7 @@
     background-color: #ffffff;
     overflow-x: hidden;
     overflow-y: auto;
-    transition: 0.5s;
+    transition: 0.5s ease;
     padding-top: 100px;
 }
 
@@ -18,7 +18,7 @@
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 #sidenav a:hover {
