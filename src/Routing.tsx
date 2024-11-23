@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import PageWrapper from './components/PageWrapper'
 import RigInstructions from './pages/RigInstructions';
 import Bill from './pages/Bill';
