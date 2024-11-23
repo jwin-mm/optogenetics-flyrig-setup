@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import './css/Bill.css'; 
 
-const csvPath = '/BillofMaterials.csv'
+const csvPath = '/optogenetics-flyrig-setup/BillofMaterials.csv'
 
 const Bill: React.FC = () => {
   const [data, setData] = useState<string[][]>();

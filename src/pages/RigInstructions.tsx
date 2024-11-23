@@ -2,7 +2,7 @@ import React from 'react';
 import ContentSection from '../components/ContentSection';
 import './css/RigInstructions.css'
 
-const imageBasePath = "/optogenetics-flyrig-setup/src/assets/images/RigInstructions/"
+const imageBasePath = "/optogenetics-flyrig-setup/images/RigInstructions/"
 
 const RigInstructions: React.FC = () => {
   return (
