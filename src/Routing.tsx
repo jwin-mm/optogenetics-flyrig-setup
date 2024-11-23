@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import PageWrapper from './components/PageWrapper'
 import RigInstructions from './pages/RigInstructions';
 import Bill from './pages/Bill';
@@ -24,7 +24,7 @@ const routes = [
 
 const Routing: React.FC = () => {
   return (
-    <Router>
+    <BrowserRouter basename="/optogenetics-flyrig-setup">
       <Routes>
         {routes.map((route, index) => (
           <Route
@@ -34,7 +34,7 @@ const Routing: React.FC = () => {
           />
         ))}
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
 
