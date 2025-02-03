@@ -53,7 +53,10 @@ const Sidenav: React.FC = () => {
                         <Link
                             to={link.path}
                             className="sidenav-link"
-                            onClick={() => toggleDropdown(link.label)}
+                            onClick={() => {
+                                toggleDropdown(link.label);
+                                closeNav();
+                            }}
                         >
                             {link.label}
                         </Link>
