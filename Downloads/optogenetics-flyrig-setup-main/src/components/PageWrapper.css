@@ -1,0 +1,19 @@
+#menu-icon {
+    top: 20px;
+    left: 40px;
+    font-size: 40px;
+    position: fixed;
+    cursor: pointer;
+}
+
+#menu-icon:hover {
+    color: #aaa; 
+    transform: scale(1.1);
+    transition: 0.3s ease
+}
+
+#wrapper {
+    transition: margin-left .5s ease;
+    padding: 16px;
+    overflow-x: hidden;
+}
