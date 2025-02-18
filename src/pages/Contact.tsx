@@ -9,13 +9,13 @@ const Contact: React.FC = () => {
         <form className="mt-4">
           <div className="mb-4">
             <label className="block text-black font-medium">Email</label>
-            <input type="email" className="w-full p-2 mt-1 border border-gray-300 rounded-md" />
+            <input type="email" className="w-full p-2 mt-1 border border-gray-300 rounded-md text-black" />
           </div>
           <div className="mb-4">
-            <label className="block text-black font-medium">Message</label>
+            <label className="block text-black font-medium text-black">Message</label>
             <textarea className="w-full p-2 mt-1 border border-gray-300 rounded-md" rows={4}></textarea>
           </div>
-          <button className="w-full bg-blue-600 hover:bg-blue-700 text-black p-2 rounded-md">
+          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md">
             Send Message
           </button>
         </form>
