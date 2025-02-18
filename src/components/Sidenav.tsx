@@ -25,7 +25,7 @@ const Sidenav: React.FC = () => {
     const closeNav = () => {
         document.getElementById("sidenav")!.style.width = "0px";
         document.getElementById("wrapper")!.style.marginLeft = "0px";
-        document.body.style.backgroundColor = "white";
+        document.body.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
         const images = document.querySelectorAll('img');
         images.forEach((img) => {
             img.style.filter = 'none'; 
