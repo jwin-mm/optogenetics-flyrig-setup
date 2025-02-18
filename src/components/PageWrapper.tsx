@@ -18,7 +18,8 @@ const PageWrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     sidenav!.style.width = sidenavWidth;
     wrapper!.style.marginLeft = sidenavWidth;
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    document.body.style.backgroundColor = "rgba(50, 40, 40, 0.81)";
+
     
     const images = document.querySelectorAll('img');
     images.forEach((img) => {
