@@ -53,14 +53,17 @@ const Sidenav: React.FC = () => {
                         <Link
                             to={link.path}
                             className="sidenav-link"
-                            onClick={() => toggleDropdown(link.label)}
+                            onClick={() => {
+                                toggleDropdown(link.label);
+                                closeNav();
+                            }}
                         >
                             {link.label}
                         </Link>
                         {activePage === link.label && (
                             <div>
                                 {
-                                    sectionHeaders!.map((header: any, index: number) => (
+                                    sectionHeaders!.map((header: { id: string; text: string | null }, index: number) => (
                                     <a
                                         key={`section-${index}`}
                                         href={`#${header.id}`}
