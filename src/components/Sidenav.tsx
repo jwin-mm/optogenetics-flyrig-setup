@@ -13,7 +13,7 @@ const links = [
     { path: '/contact', label: 'Contact' }
 ];
 
-const Sidenav: React.FC = () => {
+const Sidenav: React.FC<{ closeNav: () => void }> = ({ closeNav }) => {
     const [activePage, setActivePage] = useState<string | null>(null);
     const [sectionHeaders, setSectionHeaders] = useState<{ id: string; text: string | null }[]>();
     const location = useLocation();
@@ -22,10 +22,10 @@ const Sidenav: React.FC = () => {
         setActivePage((prev) => (prev === page ? null : page));
     };
 
-    const closeNav = () => {
+    const handleCloseNav = () => {
         document.getElementById("sidenav")!.style.width = "0px";
         document.getElementById("wrapper")!.style.marginLeft = "0px";
-        document.body.style.backgroundColor = "white";
+        closeNav(); // Call the closeNav function passed as a prop
         const images = document.querySelectorAll('img');
         images.forEach((img) => {
             img.style.filter = 'none'; 
@@ -47,7 +47,7 @@ const Sidenav: React.FC = () => {
     return (
         <div>
             <div id="sidenav">
-                <a id="closebtn" onClick={closeNav}>X</a>
+                <a id="closebtn" onClick={handleCloseNav}>X</a>
                 {links.map((link) => (
                     <div key={link.label} className="sidenav-item" style={{ overflowY: "auto"}}>
                         <Link
@@ -55,7 +55,7 @@ const Sidenav: React.FC = () => {
                             className="sidenav-link"
                             onClick={() => {
                                 toggleDropdown(link.label);
-                                closeNav();
+                                handleCloseNav();
                             }}
                         >
                             {link.label}
