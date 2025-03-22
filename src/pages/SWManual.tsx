@@ -6,8 +6,17 @@ const imageBasePath = "/optogenetics-flyrig-setup/images/SWManual/"
 
 const SWManual: React.FC = () => {
   return (
-    <>
-      <img src={imageBasePath + "image1.png"} alt='Fly Rig Video Control Logo'></img>
+    <> <div
+          className="p-1 rounded-4xl mx-auto my-15 w-full max-w-lg md:max-w-md lg:max-w-lg"
+          style={{ backgroundColor: "#0b5091" }}
+        >
+        <img
+          src={imageBasePath + "image1.png"}
+          className="pt-3"
+          alt="Fly Rig Video Control Logo"
+        />
+      </div>
+      
       <ContentSection
         title="SAFETY CONSIDERATIONS"
         content={
@@ -29,7 +38,7 @@ const SWManual: React.FC = () => {
               <li>Launch FlyRig.exe.</li>
               <li>Close the tab on the right side of the screen by clicking the X (red circle below).</li>
             </ol>
-            <img src={imageBasePath + "image2.png"} style={{ width: "500px"}} alt='Fly Rig Video Control Logo'></img>
+            <img src={imageBasePath + "image2.png"} style={{ width: "500px", margin: "40px"}} alt='Fly Rig Video Control Logo'></img>
           </>
         }
       />
@@ -39,7 +48,7 @@ const SWManual: React.FC = () => {
         content={
             <ol>
               <li>Click on Camera Options. It should give you a window that looks like this:</li>
-              <img src={imageBasePath + "image3.png"} style={{ width: "300px"}} alt='Fly Rig Video Control Logo'></img>
+              <img src={imageBasePath + "image3.png"} style={{ width: "300px", margin: "40px"}} alt='Fly Rig Video Control Logo'></img>
               <li>Select the USB camera under the Source tab.</li>
               <li>Set the Framerate (frames per second) to 30.</li>
               <li>Set the Width and Height to desired pixels.</li>
@@ -53,7 +62,7 @@ const SWManual: React.FC = () => {
         content={
           <ol>
             <li>Click on the Manual Control tab.</li>
-            <img src={imageBasePath + "image4.png"} style={{ width: "300px"}} alt='Fly Rig Video Control Logo'></img>
+            <img src={imageBasePath + "image4.png"} style={{ width: "300px", margin: "40px"}} alt='Fly Rig Video Control Logo'></img>
             <li>
               The Backlight slider allows you to set the intensity of the backlight (from 0 - 100%). Click on the slider to set it to an intensity—start out around 50%. The background of the image should brighten. You won’t be able to see the light coming from the backlight because it is in the infrared wavelength (IR), which we and the flies can’t see.
             </li>
@@ -66,7 +75,7 @@ const SWManual: React.FC = () => {
         content={
           <ol>
             <li>To specify the length of your video, click on the Recording Options tab.</li>
-            <img src={imageBasePath + "image5.png"} style={{ width: "300px"}} alt='Fly Rig Video Control Logo'></img>
+            <img src={imageBasePath + "image5.png"} style={{ width: "300px", margin: "40px"}} alt='Fly Rig Video Control Logo'></img>
             <li>Set the Time (in seconds) of your recording.</li>
             <li>Set the name of your video in File Base Name. The video filename will start with this name.</li>
             <li>Specify where you want to save your video in File Base Name. It should open a browser window. Select the folder where you want to save your videos.</li>
@@ -91,8 +100,10 @@ const SWManual: React.FC = () => {
               <li>Pulse length (ms): this is the duration of each pulse.</li>
               <li>Time (sec): this is the duration of the stimulation (how long you stimulate)</li>
               <li>Quadrants: Which set of LEDs to activate.</li>
-              <img src={imageBasePath + "image6.png"} style={{ backgroundColor: "white", width: "500px" }} alt='Fly Rig Video Control Logo'></img>
-              <img src={imageBasePath + "image7.png"} style={{ width: "300px"}} alt='Fly Rig Video Control Logo'></img>
+              <div style={{ display: "flex", gap: "20px", justifyContent: "center", margin: "40px 0" }}>
+                <img src={imageBasePath + "image6.png"} style={{ backgroundColor: "white", width: "900px" }} alt='Fly Rig Video Control Logo'></img>
+                <img src={imageBasePath + "image7.png"} style={{ width: "300px" }} alt='Fly Rig Video Control Logo'></img>
+              </div>
             </ul>
           </>
         }
@@ -132,7 +143,7 @@ const SWManual: React.FC = () => {
           <>
             <p>This setting allows you to pre-program a set of light stimulations and experimental metadata. This can be useful if you want to give repeated stimulation protocols during several experiments.</p>
             <ol>
-              <img src={imageBasePath + "image8.png"} style={{width: "300px", wordWrap: "break-word" }} alt='Fly Rig Video Control Logo'></img>
+              <img src={imageBasePath + "image8.png"} style={{width: "300px", wordWrap: "break-word", margin: "40px" }} alt='Fly Rig Video Control Logo'></img>
               <li>Click on the Auto Control tab.</li>
               <li>Each Cue is a separate “time period” during your experiment. You can either set the light to ON or OFF during these periods.</li>
               <li>To get you started, you can load an example CSV file that will pre-load some Cues into the program.</li>
@@ -147,7 +158,7 @@ const SWManual: React.FC = () => {
               </ul>
               <li>You can Add, Edit or Delete Cues.</li>
               <li>Add and Edit will give you this window.</li>
-              <img src={imageBasePath + "image9.png"} style={{ width: "350px"}} alt='Fly Rig Video Control Logo'></img>
+              <img src={imageBasePath + "image9.png"} style={{ width: "350px", margin: "40px"}} alt='Fly Rig Video Control Logo'></img>
               <li>The Start Time indicates when during the recording (i.e., elapsed time) the cue should start. Make sure it doesn’t overlap with other cues.</li>
               <li>Once you have your Cues set, you will want to specify the file path and name of your recording (Recording Options tab).</li>
               <li>Clicking on the Run button of the Auto Control tab will start a recording and the light stimulation experiment you programmed into Auto Control.</li>

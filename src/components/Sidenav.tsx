@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Sidenav.css';
 
 const links = [
@@ -13,24 +13,19 @@ const links = [
     { path: '/contact', label: 'Contact' }
 ];
 
-const Sidenav: React.FC = () => {
+const Sidenav: React.FC<{ 
+    isOpen: boolean;
+    onClose: () => void;
+    isMobile: boolean;
+  }> = ({ isOpen, isMobile }) => {
     const [activePage, setActivePage] = useState<string | null>(null);
-    const [sectionHeaders, setSectionHeaders] = useState<{ id: string; text: string | null }[]>();
+    const [sectionHeaders, setSectionHeaders] = useState<{ id: string; text: string | null }[]>([]);
     const location = useLocation();
+    const navigate = useNavigate();
 
     const toggleDropdown = (page: string) => {
         setActivePage((prev) => (prev === page ? null : page));
     };
-
-    const closeNav = () => {
-        document.getElementById("sidenav")!.style.width = "0px";
-        document.getElementById("wrapper")!.style.marginLeft = "0px";
-        document.body.style.backgroundColor = "white";
-        const images = document.querySelectorAll('img');
-        images.forEach((img) => {
-            img.style.filter = 'none'; 
-        });
-    }
 
     useEffect(() => {
         const fetchSections = () => {
@@ -39,45 +34,65 @@ const Sidenav: React.FC = () => {
                 text: header.textContent,
             }));
             setSectionHeaders(headers);
-        }
+        };
 
         fetchSections();
     }, [location.pathname]);
 
+    const handleLogoClick = () => {
+        navigate('/sw-manual');
+    };
+
     return (
-        <div>
-            <div id="sidenav">
-                <a id="closebtn" onClick={closeNav}>X</a>
+        <div 
+        id="sidenav"
+        className={`${isOpen ? 'is-open' : ''} ${isMobile ? 'mobile-nav' : ''}`}
+    >
+            <div 
+                className="inset-0 bg-white fixed items-center justify-center p-2 ml-7 mx-auto mb-5 w-70 h-[110px] cursor-pointer"
+                style={{ zIndex: 0 }} 
+            />
+            <div 
+                className="z-10 fixed items-center justify-center p-2 rounded-3xl ml-7 mx-auto mt-4 mb-5 w-[177px] h-[63px] cursor-pointer"
+                style={{ backgroundColor: "#0b5091" }}
+                onClick={handleLogoClick}>
+                    <img 
+                    src="/optogenetics-flyrig-setup/images/logo.png" 
+                    className="w-40 h-32 object-contain absolute -top-1" 
+                    alt="Logo" 
+                    />
+                <div 
+                    className="absolute w-70 h-28 left-0 top-full bg-gradient-to-b from-white to-transparent pointer-events-none"
+                />
+            </div>
+                
+
+            <div className='mt-39'>
                 {links.map((link) => (
-                    <div key={link.label} className="sidenav-item" style={{ overflowY: "auto"}}>
+                    <div key={link.label} className="sidenav-item ">
                         <Link
                             to={link.path}
-                            className="sidenav-link"
-                            onClick={() => {
-                                toggleDropdown(link.label);
-                                closeNav();
-                            }}
+                            className="sidenav-link "
+                            onClick={() => toggleDropdown(link.label)}
                         >
                             {link.label}
                         </Link>
-                        {activePage === link.label && (
-                            <div>
-                                {
-                                    sectionHeaders!.map((header: { id: string; text: string | null }, index: number) => (
+                       {activePage === link.label && (
+                          <div className="ml-10 mb-3">
+                                {sectionHeaders.map((header, index) => (
                                     <a
                                         key={`section-${index}`}
                                         href={`#${header.id}`}
-                                        style={{ fontSize: '18px' }}
                                     >
                                         {header.text}
                                     </a>
-                                    ))
-                                }
+                                ))}
                             </div>
                         )}
                     </div>
                 ))}
             </div>
+            
         </div>
     );
 };
