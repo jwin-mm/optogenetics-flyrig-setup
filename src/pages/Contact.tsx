@@ -68,11 +68,11 @@ const Contact: React.FC = () => {
       </div>
       {/* Picture and info div */}
       <div className="absolute top-1/3 left-130 p-4 text-white flex flex-col items-center">
-        <div className="w-52 h-52 rounded-full overflow-hidden mb-3">
+        <div className="w-52 h-52 overflow-hidden mb-5">
           <img
             src="/optogenetics-flyrig-setup/images/ehoopfer.jpg"
             alt="Eric Hoopfer Profile Picture"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover "
           />
         </div>
         <div>

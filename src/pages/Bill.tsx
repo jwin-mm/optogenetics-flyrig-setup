@@ -32,7 +32,7 @@ const Bill: React.FC = () => {
         <p>Data is loading...</p>
     ) : (
       
-      <table border={1}>
+      <table border={1} >
         <thead>
           {data!.length > 0 && (
             <tr>
