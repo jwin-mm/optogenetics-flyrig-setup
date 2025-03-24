@@ -1,41 +1,58 @@
-import React, { ReactNode } from 'react';
-import './PageWrapper.css'
+import React, { ReactNode, useState, useEffect } from 'react';
+import './PageWrapper.css';
 import Sidenav from './Sidenav';
 
 const PageWrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const openNav = () => {
-    const sidenav = document.getElementById("sidenav");
-    const wrapper = document.getElementById("wrapper");
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-    let sidenavWidth;
-    if (window.innerWidth <= 480) {
-        sidenavWidth = "200px"; // Small screen
-    } else if (window.innerWidth <= 768) {
-        sidenavWidth = "250px"; // Medium screen
-    } else {
-        sidenavWidth = "500px"; // Large screen
-    }
-
-    sidenav!.style.width = sidenavWidth;
-    wrapper!.style.marginLeft = sidenavWidth;
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  // Handle responsive state
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) setIsNavOpen(false);
+    };
     
-    const images = document.querySelectorAll('img');
-    images.forEach((img) => {
-      img.style.transition = 'filter 0.5s';
-      img.style.filter = 'brightness(0.5)'; // Adjust percentage to control gray level
-    });
-}
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-  return <>
-    <Sidenav />
-    <div id='wrapper'> 
-      <div id="menu-icon" onClick={openNav}>
-                ☰
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  return (
+    <>
+      <div 
+  id='wrapper' 
+  className={`transition-all duration-300 ${
+    isNavOpen && !isMobile ? 'ml-[250px]' : 'ml-0'
+  }`}
+></div>
+      <Sidenav isOpen={isNavOpen} onClose={toggleNav} isMobile={isMobile} />
+      <div id='wrapper' className={`ml-0 md:ml-[770px] transition-all duration-300`}>
+        <button
+          id="menu-icon"
+          onClick={toggleNav}
+          className={`md:hidden fixed top-4 left-4 z-50 bg-[#0b5091] rounded-lg text-white ${
+            isNavOpen ? 'hidden' : 'block'
+          }`}
+        >
+          ☰
+        </button>
+        {children}
       </div>
-      {children}
-    </div>
-  </>;
+      {/* Mobile overlay */}
+      {isNavOpen && isMobile && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={toggleNav}
+        />
+        
+      )}
+    </>
+  );
 };
 
 export default PageWrapper;

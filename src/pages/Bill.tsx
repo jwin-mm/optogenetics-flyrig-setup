@@ -27,11 +27,12 @@ const Bill: React.FC = () => {
 
   return (
     <div>
-    <h1>Bill Data</h1>
+    <h1 className='mb-30 ml-50'>Bill Data</h1>
     {loading ? (
         <p>Data is loading...</p>
     ) : (
-      <table border={1}>
+      
+      <table border={1} >
         <thead>
           {data!.length > 0 && (
             <tr>
