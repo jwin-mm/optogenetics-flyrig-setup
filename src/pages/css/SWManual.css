@@ -15,3 +15,7 @@ img {
         max-width: 60%;
     }
 }
+
+li {
+    margin-bottom: 1.5rem; /* Equivalent to mb-6 in Tailwind (6 * 0.25rem) */
+}

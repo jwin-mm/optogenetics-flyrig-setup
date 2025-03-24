@@ -97,7 +97,7 @@ const RigInstructions: React.FC = () => {
                 src="image4.png"
                 alt="Fly Rig Diagram"
                 maxWidth="lg"
-                className="col-span-5 row-span-2 my-4 ml-40"
+                className="col-span-9 row-span-2 my-4 ml-40"
               />
               <div className="col-span-4 pt-10 mb-4">
                 <p className="text-blue-300">
@@ -118,10 +118,14 @@ const RigInstructions: React.FC = () => {
       <ContentSection
         title="Assemble the Structure"
         content={
-          <ol className="list-decimal pl-8 space-y-4 text-gray-300 mt-15">
-            <div className="grid grid-cols-4 gap-4">
-              <li className="col-span-1 pt-10">
+          <ol className="list-decimal pl-8 space-y-4 text-gray-300 mt-10">
+            <div className="gap-4">
+              <li className="pb-2">
                 Assemble the top and bottom panels into the side panels.
+              </li>
+              <li className="pb-2">Assemble the front and back panels.</li>
+              <li className="pb-2">
+                The panels can be joined at T-slots using ½” 4-40 screws and square nuts or glued together.
               </li>
               <RigImage
                 src="image5.png"
@@ -129,25 +133,22 @@ const RigInstructions: React.FC = () => {
                 maxWidth="xl"
                 className="col-span-3 row-span-3 my-4"
               />
-              <li>Assemble the front and back panels.</li>
-              <li>
-                The panels can be joined at T-slots using ½” 4-40 screws and square nuts or glued together.
-              </li>
             </div>
-            <div className="grid grid-cols-9 gap-4">
-              <li className="col-span-7 pt-7">Screw camera into cameraInsert plate.</li>
+            <div className="gap-4">
+            <li className="pb-2">Screw camera into cameraInsert plate.</li>
+              <li className="pb-2">
+                Cut a piece of IR filter to match the size of the camera lens and affix it to the lens with glue.
+              </li>
+              <li className="pb-2">
+                The rig is designed to allow flexibility in the distance between the LED, chamber, and camera plates. Insert the plates in the shelves and use the lock pin to keep the plates in place.
+              </li>
+              
               <RigImage
                 src="image6.png"
                 alt="Camera Assembly"
                 maxWidth="lg"
-                className="col-span-2 row-span-3"
+                className="col-span-3 row-span-3"
               />
-              <li className="col-span-7">
-                Cut a piece of IR filter to match the size of the camera lens and affix it to the lens with glue.
-              </li>
-              <li className="col-span-7 mb-30">
-                The rig is designed to allow flexibility in the distance between the LED, chamber, and camera plates. Insert the plates in the shelves and use the lock pin to keep the plates in place.
-              </li>
             </div>
           </ol>
         }

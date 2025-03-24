@@ -31,7 +31,7 @@ const PageWrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
   }`}
 ></div>
       <Sidenav isOpen={isNavOpen} onClose={toggleNav} isMobile={isMobile} />
-      <div id='wrapper' className={`ml-0 md:ml-[250px] transition-all duration-300`}>
+      <div id='wrapper' className={`ml-0 md:ml-[770px] transition-all duration-300`}>
         <button
           id="menu-icon"
           onClick={toggleNav}

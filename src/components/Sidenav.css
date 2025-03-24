@@ -38,15 +38,15 @@
   transition: background-color 0.2s ease;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   #sidenav {
     width: 250px;
   }
   
 }
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
     #sidenav {
       width: 240px;
     } 
-  }
+  } */

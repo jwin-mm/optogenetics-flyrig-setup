@@ -49,7 +49,7 @@ const Sidenav: React.FC<{
         className={`${isOpen ? 'is-open' : ''} ${isMobile ? 'mobile-nav' : ''}`}
     >
             <div 
-                className="inset-0 bg-white fixed items-center justify-center p-2 ml-7 mx-auto mb-5 w-70 h-[110px] cursor-pointer"
+                className="inset-0 bg-white fixed items-center justify-center p-2 ml-7 mx-auto mb-5 w-70 h-[110px] cursor-pointer "
                 style={{ zIndex: 0 }} 
             />
             <div 
@@ -62,7 +62,7 @@ const Sidenav: React.FC<{
                     alt="Logo" 
                     />
                 <div 
-                    className="absolute w-70 h-28 left-0 top-full bg-gradient-to-b from-white to-transparent pointer-events-none"
+                    className="absolute w-70 h-28 left-0 top-full bg-gradient-to-b from-white to-transparent pointer-events-none "
                 />
             </div>
                 

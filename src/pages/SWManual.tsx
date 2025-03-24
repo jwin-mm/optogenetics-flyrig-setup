@@ -21,9 +21,9 @@ const SWManual: React.FC = () => {
         title="SAFETY CONSIDERATIONS"
         content={
           <>
-            <p>The optogenetics setup uses a 12-24V power supply. Before touching any part of the circuit board or wires, make sure that the power supply is off and unplugged.</p>
-            <p>Do not touch the LEDs or wires while the system is plugged into the power supply.</p>
-            <p>Avoid staring directly at the LED lights while they are on.</p>
+            <p className='mb-6'> • The optogenetics setup uses a 12-24V power supply. Before touching any part of the circuit board or wires, make sure that the power supply is off and unplugged.</p>
+            <p className='mb-6'> • Do not touch the LEDs or wires while the system is plugged into the power supply.</p>
+            <p className='mb-6'> • Avoid staring directly at the LED lights while they are on.</p>
           </>
         }
       />
@@ -33,9 +33,9 @@ const SWManual: React.FC = () => {
         content={
           <>
             <ol>
-              <li>Make sure the camera is connected to the USB port.</li>
-              <li>Ensure the IR and LED lights are plugged into the board, but do not connect the power yet.</li>
-              <li>Launch FlyRig.exe.</li>
+              <li >Make sure the camera is connected to the USB port.</li>
+              <li >Ensure the IR and LED lights are plugged into the board, but do not connect the power yet.</li>
+              <li >Launch FlyRig.exe.</li>
               <li>Close the tab on the right side of the screen by clicking the X (red circle below).</li>
             </ol>
             <img src={imageBasePath + "image2.png"} style={{ width: "500px", margin: "40px"}} alt='Fly Rig Video Control Logo'></img>
@@ -47,12 +47,12 @@ const SWManual: React.FC = () => {
         title="Setting Up the Camera"
         content={
             <ol>
-              <li>Click on Camera Options. It should give you a window that looks like this:</li>
+              <li> 1- Click on Camera Options. It should give you a window that looks like this:</li>
               <img src={imageBasePath + "image3.png"} style={{ width: "300px", margin: "40px"}} alt='Fly Rig Video Control Logo'></img>
-              <li>Select the USB camera under the Source tab.</li>
-              <li>Set the Framerate (frames per second) to 30.</li>
-              <li>Set the Width and Height to desired pixels.</li>
-              <li>You should now see a live image from your chamber in the main window.</li>
+              <li> 2- Select the USB camera under the Source tab.</li>
+              <li> 3- Set the Framerate (frames per second) to 30.</li>
+              <li> 4- Set the Width and Height to desired pixels.</li>
+              <li> 5- You should now see a live image from your chamber in the main window.</li>
             </ol>
         }
       />
