@@ -24,14 +24,14 @@ const PageWrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <>
-      <div 
-  id='wrapper' 
-  className={`transition-all duration-300 ${
-    isNavOpen && !isMobile ? 'ml-[250px]' : 'ml-0'
-  }`}
-></div>
-      <Sidenav isOpen={isNavOpen} onClose={toggleNav} isMobile={isMobile} />
-      <div id='wrapper' className={`ml-0 md:ml-[770px] transition-all duration-300`}>
+      <div
+        id="wrapper"
+        className={`transition-all duration-300 ${
+          isNavOpen && !isMobile ? 'sidebar-open' : ''
+        }`}
+      >
+        <Sidenav isOpen={isNavOpen} onClose={toggleNav} isMobile={isMobile} />
+  
         <button
           id="menu-icon"
           onClick={toggleNav}
@@ -41,18 +41,19 @@ const PageWrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
         >
           ☰
         </button>
+  
         {children}
       </div>
+  
       {/* Mobile overlay */}
       {isNavOpen && isMobile && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
           onClick={toggleNav}
         />
-        
       )}
     </>
-  );
+  );  
 };
 
 export default PageWrapper;

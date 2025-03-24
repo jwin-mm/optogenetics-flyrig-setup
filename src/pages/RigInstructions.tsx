@@ -3,7 +3,14 @@ import ContentSection from '../components/ContentSection';
 
 const imageBasePath = "/optogenetics-flyrig-setup/images/RigInstructions/";
 
-const RigImage = ({ src, alt, maxWidth = 'lg', className = '' }) => (
+type RigImageProps = {
+  src: string;
+  alt: string;
+  maxWidth?: string;
+  className?: string;
+};
+
+const RigImage = ({ src, alt, maxWidth = 'lg', className = '' }: RigImageProps) => (
   <img
     src={`${imageBasePath}${src}`}
     alt={alt}

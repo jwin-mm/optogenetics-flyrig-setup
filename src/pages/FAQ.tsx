@@ -11,9 +11,9 @@ const faqData = [
 ];
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleAnswer = (index) => {
+  const toggleAnswer = (index: number) => {
     if (!faqData[index].answer) {
       window.location.href = "/optogenetics-flyrig-setup/contact"; 
     } else {
